@@ -5,6 +5,7 @@ public class Board {
 	private int width;
 	private int height;
 	
+	//instantiate an empty board with given width and height
 	public Board(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -17,16 +18,24 @@ public class Board {
 		}
 	}
 	
+	//instantiate board straight from a text file
 	public Board(String board) {
 		this.board = board;
 		
 	}
 	
+	//method to get index of board element at specified position (x,y)
+		public int getIndex(int x, int y) {
+			return (y * (width + 1)) + x;
+		}
+		
+	//return raw string
 	@Override
 	public String toString() {
 		return board;
 	}
 	
+	//returns the board formatted with spaces
 	public String spaceString() {
 		String s = "";
 		for(int y = 0; y < height; y++) {
@@ -41,6 +50,7 @@ public class Board {
 		return s;
 	}
 	
+	//returns the board formatted with spaces and x, y coordinate labels
 	public String labeledString() {
 		String s = "  ";
 		for(int x = 0; x < width; x++) {
@@ -62,9 +72,7 @@ public class Board {
 		return s;
 	}
 	
-	public int getIndex(int x, int y) {
-		return (y * (width + 1)) + x;
-	}
+	
 	
 	public void set(int x, int y, char c) {
 		int i = getIndex(x,y);
