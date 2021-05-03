@@ -29,9 +29,9 @@ public class Board {
 	
 	public String spaceString() {
 		String s = "";
-		for(int i = 0; i < height; i++) {
-			for(int j = 0; j <= width; j++) {
-				char c = board.charAt((i * (width + 1)) + j);
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x <= width; x++) {
+				char c = board.charAt(getIndex(x,y));
 				s += c; 
 				if(c != '\n') {
 					s += " ";
@@ -41,7 +41,36 @@ public class Board {
 		return s;
 	}
 	
-	public void set(int x, int y, char c) {
-		
+	public String labeledString() {
+		String s = "  ";
+		for(int x = 0; x < width; x++) {
+			s+=x;
+			s+=" ";
+		}
+		s+='\n';
+		for(int y = 0; y < height; y++) {
+			s+=y;
+			s+=" ";
+			for(int x = 0; x <= width; x++) {
+				char c = board.charAt(getIndex(x,y));
+				s += c; 
+				if(c != '\n') {
+					s += " ";
+				}
+			}
+		}
+		return s;
 	}
+	
+	public int getIndex(int x, int y) {
+		return (y * (width + 1)) + x;
+	}
+	
+	public void set(int x, int y, char c) {
+		int i = getIndex(x,y);
+		String s1 = board.substring(0,i);
+		String s2 = board.substring(i+1);
+		board = s1 + c + s2;
+	}
+	
 }
