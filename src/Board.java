@@ -4,6 +4,8 @@
  * Date: May 03, 2021
  * This is a 2 dimensional board based on a String
  * \n represents a line break > after line break is a new row
+ * not very friendly with boards with 10+ rows
+ * but you can still do it.
  */
 public class Board {
 
@@ -46,9 +48,9 @@ public class Board {
 	//Constructors
 	
 	//method to get index of board element at specified position (x,y)
-		public int getIndex(int x, int y) {
-			return (y * (width + 1)) + x;
-		}
+	public int getIndex(int x, int y) {
+		return (y * (width + 1)) + x;
+	}
 		
 	//return raw string
 	@Override
@@ -75,7 +77,7 @@ public class Board {
 	public String labeledString() {
 		String s = "  ";
 		for(int x = 0; x < width; x++) {
-			s+=x;
+			s+=x%10;
 			s+=" ";
 		}
 		s+='\n';
