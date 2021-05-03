@@ -1,15 +1,30 @@
-
+/*
+ * Author: Jay Paek, Claire Chen, Eddie Li
+ * Version: 1.0
+ * Date: May 03, 2021
+ * This is a 2 dimensional board based on a String
+ * \n represents a line break > after line break is a new row
+ */
 public class Board {
 
+	//Fields
 	private String board;
-	private int width;
-	private int height;
+	public int width;
+	public int height;
+	
+	//Constructors
 	
 	//instantiate an empty board with given width and height
 	public Board(int width, int height) {
+		
+		//set width and height of Board
 		this.width = width;
 		this.height = height;
+		
+		//instantiate board
 		board = "";
+		
+		//set all elements of board to 0
 		for(int i = 0; i < height; i++) {
 			for(int j = 0; j < width; j++) {
 				board+="0";
@@ -19,10 +34,16 @@ public class Board {
 	}
 	
 	//instantiate board straight from a text file
+	//automatically sets the width and height
 	public Board(String board) {
+		//set the input string as the board
 		this.board = board;
 		
+		//set the width and height
+		width = board.indexOf('\n');
+		height = board.length()/width-1;
 	}
+	//Constructors
 	
 	//method to get index of board element at specified position (x,y)
 		public int getIndex(int x, int y) {
