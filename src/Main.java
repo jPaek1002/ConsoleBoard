@@ -30,9 +30,13 @@ public class Main {
 				+ "1234\n"
 				+ "abcd\n"
 				+ "1234\n";
-		System.out.println("Entered string:");
+		//then print the String
+		System.out.println("Entered	 string:");
 		System.out.println(b);
+		
+		//instantiate the board with String b
 		board = new Board(b);
+		//then print the board
 		System.out.println("Board string:");
 		System.out.println(board);
 

@@ -6,6 +6,7 @@
  * \n represents a line break > after line break is a new row
  * not very friendly with boards with 10+ rows
  * but you can still do it.
+ * THIS CLASS IS IMMUTABLE (subject to change)
  */
 public class Board {
 
@@ -96,12 +97,21 @@ public class Board {
 	}
 	
 	
-	
+	//set value of character at (x,y) to parameter character 'c'
 	public void set(int x, int y, char c) {
 		int i = getIndex(x,y);
 		String s1 = board.substring(0,i);
 		String s2 = board.substring(i+1);
 		board = s1 + c + s2;
+	}
+	
+	//accessor methods
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 }
