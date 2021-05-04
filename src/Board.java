@@ -38,6 +38,8 @@ public class Board {
 	
 	//instantiate board straight from a text file
 	//automatically sets the width and height
+	//NOTE: DO NOT INVOKE THIS CONSTRUCTOR WITH AN EMPTY STRING
+	//No good
 	public Board(String board) {
 		//set the input string as the board
 		this.board = board;
