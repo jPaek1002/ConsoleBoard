@@ -12,8 +12,8 @@ public class Board {
 
 	//Fields
 	private String board;
-	public int width;
-	public int height;
+	private int width;
+	private int height;
 	
 	//Constructors
 	
