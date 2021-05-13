@@ -133,6 +133,8 @@ public class Board {
 		board = s1 + c + s2;
 	}
 	
+	//reads data from a text file and set the board String to the text file's String
+	//DO NOT FORMAT THE TEXT FILE WITH SPACES, or else the board will read spaces as elements of the board.
 	public void readData (String filename) {
 		File dataFile = new File(filename);
 
@@ -176,14 +178,16 @@ public class Board {
 		return board;
 	}
 	//mutator methods
-	public void setWidth(int width) {
+	private void setWidth(int width) {
 		this.width = width;
 	}
-	
-	public void setHeight(int height) {
+	//set the Height
+	private void setHeight(int height) {
 		this.height = height;
 	}
-	public void setBoard(String board) {
+	public void resetBoard(String board) {
 		this.board = board;
+		width = board.indexOf('\n');
+		height = board.length()/width-1;
 	}
 }

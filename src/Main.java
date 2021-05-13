@@ -46,6 +46,7 @@ public class Main {
 		System.out.println(board.labeledString());
 		
 		//create board from text file
+		//note that the makeBoardFromFile method RETURNS a board, so you need to assign it to the Board variable
 		board = board.makeBoardFromFile("test.txt");
 		
 		//print board again
