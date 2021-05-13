@@ -44,6 +44,15 @@ public class Main {
 		//print board again
 		System.out.println(board.spaceString());
 		System.out.println(board.labeledString());
+		
+		//create board from text file
+		board.makeBoardFromFile("test.txt");
+		
+		//print board again
+		System.out.println(board);
+		System.out.println(board.spaceString());
+		System.out.println(board.labeledString());
+		
 	}
 
 }

@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 /*
  * Author: Jay Paek, Claire Chen, Eddie Li
  * Version: 1.0
@@ -17,6 +22,10 @@ public class Board {
 	
 	//Constructors
 	
+	//create an empty board
+	public Board() {
+		
+	}
 	//instantiate an empty board with given width and height
 	public Board(int width, int height) {
 		
@@ -36,7 +45,7 @@ public class Board {
 		}
 	}
 	
-	//instantiate board straight from a text file
+	//instantiate board straight from a text file	 	
 	//automatically sets the width and height
 	//NOTE: DO NOT INVOKE THIS CONSTRUCTOR WITH AN EMPTY STRING
 	//No good
@@ -48,7 +57,23 @@ public class Board {
 		width = board.indexOf('\n');
 		height = board.length()/width-1;
 	}
-	//Constructors
+	
+	//instantiate board straight from a text file	 	
+	//automatically sets the width and height
+	//NOTE: DO NOT INVOKE THIS CONSTRUCTOR WITH AN EMPTY STRING
+	//No good
+	public Board makeBoardFromFile(String fileName) {
+		//create an empty board
+		Board b = new Board();
+		
+		//set up the board by reading from the file
+		
+		b.readData(fileName);
+		//set the width and height
+		b.setWidth(b.getBoard().indexOf('\n'));
+		b.setHeight(b.getBoard().length()/width-1);
+		return b;
+	}
 	
 	//method to get index of board element at specified position (x,y)
 	public int getIndex(int x, int y) {
@@ -107,6 +132,38 @@ public class Board {
 		board = s1 + c + s2;
 	}
 	
+	public void readData (String filename) {
+		File dataFile = new File(filename);
+
+		if (dataFile.exists()) {
+			int count = 0;
+
+			FileReader reader = null;
+			Scanner in = null;
+			try {
+					reader = new FileReader(dataFile);
+					in = new Scanner(reader);
+					
+					while (in.hasNext()) {
+						String line = in.nextLine();
+						for(int i = 0; i < line.length(); i++) {
+								board += line.charAt(i);
+						}
+						count++;
+					}
+
+			} catch (IOException ex) {
+				throw new IllegalArgumentException("Data file " + filename + " cannot be read.");
+			} finally {
+				if (in != null)
+					in.close();
+			}
+			
+		} else {
+			throw new IllegalArgumentException("Data file " + filename + " does not exist.");
+		}
+	}
+	
 	//accessor methods
 	public int getWidth() {
 		return width;
@@ -115,5 +172,18 @@ public class Board {
 	public int getHeight() {
 		return height;
 	}
+	public String getBoard() {
+		return board;
+	}
+	//mutator methods
+	public void setWidth(int width) {
+		this.width = width;
+	}
 	
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public void setBoard(String board) {
+		this.board = board;
+	}
 }
