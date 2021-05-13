@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 /*
  * Author: Jay Paek, Claire Chen, Eddie Li
- * Version: 1.0
- * Date: May 03, 2021
+ * Version: 2.0
+ * Date: May 13, 2021
  * This is a 2 dimensional board based on a String
  * \n represents a line break > after line break is a new row
  * not very friendly with boards with 10+ rows
