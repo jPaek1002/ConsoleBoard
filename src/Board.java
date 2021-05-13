@@ -24,7 +24,7 @@ public class Board {
 	
 	//create an empty board
 	public Board() {
-		
+		board = "";
 	}
 	//instantiate an empty board with given width and height
 	public Board(int width, int height) {
@@ -69,6 +69,7 @@ public class Board {
 		//set up the board by reading from the file
 		
 		b.readData(fileName);
+		System.out.println(b);
 		//set the width and height
 		b.setWidth(b.getBoard().indexOf('\n'));
 		b.setHeight(b.getBoard().length()/width-1);
@@ -136,7 +137,6 @@ public class Board {
 		File dataFile = new File(filename);
 
 		if (dataFile.exists()) {
-			int count = 0;
 
 			FileReader reader = null;
 			Scanner in = null;
@@ -149,7 +149,7 @@ public class Board {
 						for(int i = 0; i < line.length(); i++) {
 								board += line.charAt(i);
 						}
-						count++;
+						board+="\n";
 					}
 
 			} catch (IOException ex) {
